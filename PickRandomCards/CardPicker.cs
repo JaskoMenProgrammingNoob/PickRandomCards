@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PickRandomCards
+{
+    internal class CardPicker
+    {
+        static Random random = new Random();
+        public static string[] PickSomeCards(int numberOfCards)
+        {
+            string[] pickedCards = new string[numberOfCards];
+            for (int i = 0; i < numberOfCards; i++)
+            {
+                pickedCards[i] = RandomValue() + " " + RandomSuit();
+            }
+            return pickedCards;
+        }
+
+        private static string RandomSuit()
+        {
+            int value = random.Next(1,5);
+            if (value == 1) return "pik";
+            //jeśli wartość wylosowana równa się jeden to zwracany jest ciąg znaków pik
+            if (value == 2) return "kier";
+            //jeśli wartość wylosowana równa się jeden to zwracany jest ciąg znaków kier
+            if (value == 3) return "trefl";
+            //jeśli wartość wylosowana równa się jeden to zwracany jest ciąg znaków trefl
+            return "karo";
+            //jeśli zwracana wartość jest mniejsza od powyższych, zwrócony ciąg znaków to karo
+        }
+
+        private static string RandomValue()
+        {
+            
+            int value = random.Next(1,14);
+            if (value == 1) return "As";
+            if (value == 11) return "Walet";
+            if (value == 12) return "Dama";
+            if (value == 13) return "Krol";
+            return value.ToString();
+        }
+    }
+}
